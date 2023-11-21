@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/opcion1"
+        android:title="Ascendente"/>
+    <item
+        android:id="@+id/opcion2"
+        android:title="Descendente"/>
+    <item
+        android:id="@+id/opcion3"
+        android:title="Ordenar"
+        android:icon="@drawable/sort_24"
+        app:showAsAction="always"/>
+</menu>
