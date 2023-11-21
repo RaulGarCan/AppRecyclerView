@@ -14,8 +14,7 @@
         android:background="@color/design_default_color_primary"
         android:minHeight="?attr/actionBarSize"
         app:title="RecyclerView Ordenada"
-        app:titleTextColor="@color/white"
-        android:theme="?attr/actionBarTheme" />
+        app:titleTextColor="@color/white"/>
 
     <LinearLayout
         android:layout_width="match_parent"

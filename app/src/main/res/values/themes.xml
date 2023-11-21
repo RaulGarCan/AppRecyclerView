@@ -3,7 +3,15 @@
     <style name="Base.Theme.AppRecyclerView" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <!-- Asociamos el estilo creado al objeto que representa los tres botones -->
+        <item name="actionOverflowButtonStyle">@style/TresPuntosColor</item>
     </style>
 
     <style name="Theme.AppRecyclerView" parent="Base.Theme.AppRecyclerView" />
+    <style name="TresPuntosColor" parent="Widget.AppCompat.ActionButton.Overflow">
+
+        <item name="tint">#ffffff</item>
+
+    </style>
 </resources>
