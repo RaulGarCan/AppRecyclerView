@@ -2,6 +2,7 @@ package com.cifpceuta.apprecyclerview;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private ItemAdapter adapter;
     private EditText etNewElement;
     private Button btnAddElement;
+    private SearchView svBusqueda;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         etNewElement = findViewById(R.id.et_new_elemento);
         btnAddElement = findViewById(R.id.btn_add_elemento);
+        svBusqueda = findViewById(R.id.sv_buscar_elemento);
         setSupportActionBar(toolbar);
 
         elementos = new ArrayList<>();
@@ -51,6 +55,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addElement(etNewElement.getText().toString());
+            }
+        });
+
+        svBusqueda.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filtroElementos(newText);
+                return false;
             }
         });
     }
@@ -78,6 +95,23 @@ public class MainActivity extends AppCompatActivity {
                 ascendente();
             }
         }
+        else if (id == R.id.opcion4){
+            if(rvElementos.getLayoutManager().getClass().equals(LinearLayoutManager.class)){
+                rvElementos.setLayoutManager(new GridLayoutManager(this, 2));
+            } else {
+                rvElementos.setLayoutManager(new LinearLayoutManager(this));
+            }
+        } else if (id == R.id.opcion5) {
+            if(adapter.getPar()!=1) {
+                adapter.setPar(1);
+                adapter.notifyDataSetChanged();
+            }
+        } else if (id == R.id.opcion6){
+            if(adapter.getPar()!=-1){
+                adapter.setPar(-1);
+                adapter.notifyDataSetChanged();
+            }
+        }
 
         return true;
     }
@@ -89,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         adapter.setOrden(1);
+        adapter.setPar(0);
         adapter.notifyDataSetChanged();
     }
     public void descendente(){
@@ -99,10 +134,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         adapter.setOrden(-1);
+        adapter.setPar(0);
         adapter.notifyDataSetChanged();
     }
     public void addElement(String element){
         elementos.add(element);
         adapter.notifyItemInserted(adapter.getItemCount());
     }
+    private void filtroElementos(String texto){
+        ArrayList<String> resultadoElementos = new ArrayList<>();
+        for(String s : elementos){
+            if(s.toLowerCase().contains(texto.toLowerCase())){
+                resultadoElementos.add(s);
+            }
+        }
+        adapter.setFilterList(resultadoElementos);
+    }
+
 }

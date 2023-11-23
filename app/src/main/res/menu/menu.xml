@@ -12,4 +12,15 @@
         android:title="Ordenar"
         android:icon="@drawable/sort_24"
         app:showAsAction="always"/>
+    <item
+        android:id="@+id/opcion4"
+        android:title="Cambiar Vista"
+        android:icon="@drawable/change_24"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/opcion5"
+        android:title="Par"/>
+    <item
+        android:id="@+id/opcion6"
+        android:title="Impar"/>
 </menu>
