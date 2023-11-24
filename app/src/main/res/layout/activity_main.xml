@@ -33,22 +33,14 @@
             android:layout_weight="1">
 
         </androidx.recyclerview.widget.RecyclerView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add_elemento"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <EditText
-                android:id="@+id/et_new_elemento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-            <Button
-                android:id="@+id/btn_add_elemento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Añadir"/>
-        </LinearLayout>
+            android:layout_gravity="end"
+            android:layout_margin="12dp"
+            android:tint="#fff"
+            android:src="@drawable/add_24"/>
     </LinearLayout>
 
 </LinearLayout>
